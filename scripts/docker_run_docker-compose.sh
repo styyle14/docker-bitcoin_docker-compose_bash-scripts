@@ -21,9 +21,6 @@ if [ ! -d "$DOCKER_COMPOSE_DATA_DIR" ]; then
 	echo "Exiting now."
 	exit 2
 fi
-if [ -f "${DOCKER_COMPOSE_DATA_DIR}/docker-compose.env" ]; then
-	echo found
-fi
 
 DOCKER_COMPOSE_YAML_FILE="$(readlink -m "$2")"
 if [ ! -f "$DOCKER_COMPOSE_YAML_FILE" ]; then
@@ -35,7 +32,7 @@ fi
 docker run -it --rm \
 	-e "DOCKER_SOCKET=${DOCKER_SOCKET}" \
 	-e "DOCKER_COMPOSE_DATA_DIR=${DOCKER_COMPOSE_DATA_DIR}" \
-	-e "DISPLAY=${DISPLAY}" \
+	--env-file <(env) \
 	-v "${DOCKER_SOCKET}:${DOCKER_SOCKET}" \
 	-v "${DOCKER_COMPOSE_DATA_DIR}:${DOCKER_COMPOSE_DATA_DIR}" \
 	-w "${DOCKER_COMPOSE_DATA_DIR}" \
