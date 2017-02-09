@@ -1,3 +1,6 @@
 [submodule "docker-compose/docker-bitcoin_docker-compose"]
 	path = docker-compose/docker-bitcoin_docker-compose
 	url = https://github.com/styyle14/docker-bitcoin_docker-compose.git
+[submodule "scripts/docker-compose_bash-scripts"]
+	path = scripts/docker-compose_bash-scripts
+	url = https://github.com/styyle14/docker-compose_bash-scripts.git
